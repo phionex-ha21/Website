@@ -1,3 +1,7 @@
+app.get("/", (req, res) => {
+  res.send("Bitcoin Forum Backend is Running! 🚀");
+});
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // For handling cross-origin requests
