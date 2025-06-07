@@ -222,6 +222,13 @@
   </section>
 
   <script>
+
+    fetch("https://your-project.up.railway.app/register", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name, email, password }),
+});
+    
    document.getElementById("signupForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
