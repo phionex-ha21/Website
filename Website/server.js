@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); // For handling cross-origin requests
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use Railway's assigned port
 
 // Middleware to parse JSON and form data
 app.use(bodyParser.json());
