@@ -1,30 +1,19 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-
+const express = require('express');
+const path = require('path');
 const app = express();
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// API endpoint
+app.post('/register', (req, res) => {
+  // Your existing form handling code
+});
+
+// All routes serve index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 const PORT = process.env.PORT || 3000;
-
-app.use(bodyParser.json());
-app.use(cors());
-
-// Root route - fixes "Cannot GET /"
-app.get("/", (req, res) => {
-  res.send("Bitcoin Forum Backend is Running! 🚀");
-});
-
-// Form submission route
-app.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ error: "All fields are required!" });
-  }
-
-  console.log("New user:", { name, email }); // Check Railway logs for this
-  res.json({ message: "Registration successful!" });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
