@@ -2,13 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "Website/index.html",  // Path to your HTML file
+      "src": "Website/index.html",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/(.*)", 
       "dest": "Website/index.html"
     }
   ]
