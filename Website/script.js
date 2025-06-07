@@ -49,3 +49,23 @@
         loader.style.display = "none";
     }
 });
+const express = require('express');
+const path = require('path'); // Add this line
+
+const app = express();
+
+// Serve static files (HTML, CSS, JS)
+app.use(express.static(path.join(__dirname, 'public'))); 
+
+// Your existing /register route
+app.post('/register', (req, res) => {
+  // ... keep your existing form handling code ...
+});
+
+// All other routes serve the HTML file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'forum.html'));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
